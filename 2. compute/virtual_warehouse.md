@@ -61,3 +61,7 @@ If a warehouse is suspended, resuming it may introduce a small startup delay. Au
 ## 7. Best Practice
 
 Use the smallest warehouse that provides acceptable performance, then tune based on workload and measured query performance.
+## 8. Cost
+
+Cost are the used credits.
+Total credits = credit of the virtual WH per hour * amount of hours
