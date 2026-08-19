@@ -2,19 +2,7 @@
 
 ## 1. What Is a Multi-Cluster Warehouse?
 
-A multi-cluster warehouse can run multiple compute clusters to handle concurrency.
-
-It is mainly about **scaling out for concurrent workloads**, not simply making one query faster.
-
-```text
-             Warehouse
-                 |
-        +--------+--------+
-        |                 |
-    Cluster 1         Cluster 2
-        |                 |
-    Users/queries     Users/queries
-```
+- A multi-cluster warehouse can run multiple compute clusters to handle concurrency.
 
 ## 2. MIN_CLUSTER_COUNT and MAX_CLUSTER_COUNT
 
@@ -72,8 +60,3 @@ Multi-cluster warehouses are useful when many users/jobs query the same warehous
 
 They are not primarily a solution for a single slow query caused by an inefficient SQL plan.
 
-## 5. Cost
-
-More active clusters consume more compute resources and therefore can increase credit consumption.
-
-Use them when the concurrency benefit justifies the cost.

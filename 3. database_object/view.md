@@ -2,71 +2,41 @@
 
 ## 1. Standard View
 
-A standard view is a database object that stores a SQL definition rather than a separate physical copy of the query result.
+- A standard view is a database object that stores a SQL definition.
+- It does not store the query result.
 
-```sql
-CREATE VIEW v_orders AS
-SELECT
-    order_id,
-    customer_id,
-    amount
-FROM raw.orders
-WHERE amount > 100;
-```
+Use a standard view when:
 
-When you run:
+- want to reuse SQL logic.
+- The query is relatively simple.
+- You do not need to store another copy of the result.
 
-```sql
-SELECT *
-FROM v_orders;
-```
+## 2. Secure View
 
-Snowflake uses the view definition to execute the underlying query against current data.
+- A secure view protects the view definition and limits potential exposure of underlying data.
+- it may be slower than a standard view.
 
+Use a secure view when:
 
-## 2. When to Use a Standard View
+- Data privacy is important.
+- need to share data securely.
+- Users should not see the underlying SQL definition.
 
-Use a view when:
+## 3. Materialized View
 
-- Logic is relatively simple.
-- You want the query to use current underlying data.
-- You do not need to materialize another copy of the result.
-- Reusing a SQL definition is useful.
+- A materialized view stores both a SQL definition and its precomputed result.
+- Snowflake automatically maintains the stored result when the base table changes.
+- It requires additional storage and maintenance cost.
 
-## 3. Secure View
+Use a materialized view when:
 
-A secure view provides additional protection around information exposed through the view, which is useful for data sharing and security-sensitive use cases.
+- The same expensive query runs frequently.
+- Faster query performance is required.
 
-```sql
-CREATE SECURE VIEW customer_public AS
-SELECT
-    customer_id,
-    name,
-    email
-FROM customers;
-```
+## 4. Temporary and Recursive Views
 
-Secure views should be considered together with Snowflake's broader access-control and data-governance features.
+### Temporary View
 
+- A temporary view exists only within the session that created it.
+- It is automatically removed when the session ends.
 
-## 4. Important Note
-
-A view does not mean "a file containing SQL".
-
-In a dbt project:
-
-```text
-models/staging/stg_orders.sql
-```
-
-is source code.
-
-After `dbt run`, Snowflake can contain:
-
-```text
-STG_ORDERS
-    |
-    +-- VIEW object
-```
-
-The view object has a SQL definition managed by Snowflake.

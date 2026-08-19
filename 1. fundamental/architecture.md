@@ -1,48 +1,28 @@
 # Snowflake Architecture
 
-## 1. Storage and Compute Separation
+![alt text](image.png)
 
-### Storage
+## 1. Database storage
 
-Snowflake manages the persistent data layer. Tables store data in Snowflake-managed storage.
+- Actual data will store in cloud provider and managed by Snowflake. It provide something to work with data effectively:
+    + Compress data
+    + Micro-partion: Snowflake divide data to multi partition, main purpose help queries faster through skipping scan data
+- According to docs, SnowFlake support 3 types of data:
+    + Structure 
+    + Semi-structure
+    + unstructure
+- Object level:
+    + First level: Database 
+    + Second level: Schema, It likes a folder to contain Objects
+    + Last one: Objects (Table, View, Task,,,), place to actually work in Snowlake
 
-Objects such as databases, schemas, tables, and views are managed as database objects and metadata.
+## 2. Compute
 
-### Compute
+- Compute in Snowflake in virtual warehouse managed by Snowflake
+- There are a lot of type for special purpose and data volume
+- It support auto-scale
+- More detail is mentioned in compute session
 
-A **Virtual Warehouse** provides compute resources for executing SQL and data processing.
+## 3. Cloud service
 
-A warehouse can be suspended when it is not needed and resumed when work needs to run.
-
-## 2. Shared-nothing vs Snowflake
-
-Traditional shared-nothing systems distribute data and compute across nodes. Snowflake uses a cloud-native architecture where storage and compute are separated, allowing compute resources to scale independently from storage.
-
-## 3. Why Separation Matters
-
-- Scale compute independently from storage.
-- Different workloads can use different warehouses.
-- Warehouses can be resized or scaled independently.
-- A warehouse can be suspended when idle.
-- Multiple teams/workloads can use separate compute resources against the same underlying data.
-
-## 4. Key Mental Model
-
-```text
-Snowflake
-|
-+-- Storage
-|   +-- Databases
-|   +-- Schemas
-|   +-- Tables
-|   +-- Views
-|
-+-- Compute
-    +-- Virtual Warehouses
-```
-
-## 5. Important Distinction
-
-A suspended warehouse does **not** mean the Snowflake database disappears.
-
-The data and database objects remain available. Compute is simply not actively running for that warehouse.
+-The cloud services layer is a collection of services that coordinate activities across Snowflake
