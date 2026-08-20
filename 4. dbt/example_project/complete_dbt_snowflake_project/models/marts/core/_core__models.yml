@@ -1,0 +1,92 @@
+version: 2
+
+models:
+  - name: dim_customers
+    description: Customer dimension. Grain is one row per customer.
+    latest_version: 1
+    versions:
+      - v: 1
+    columns:
+      - name: customer_id
+        description: Stable customer identifier and primary key.
+        data_tests: [not_null, unique]
+      - name: email
+        description: Normalized customer email address.
+        data_tests: [not_null, unique]
+      - name: customer_segment
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: [high_value, active, prospect]
+
+  - name: dim_products
+    description: Product dimension. Grain is one row per product.
+    columns:
+      - name: product_id
+        data_tests: [not_null, unique]
+
+  - name: fct_orders
+    description: Order fact. Grain is exactly one row per order.
+    config:
+      contract:
+        enforced: true
+    columns:
+      - name: order_id
+        data_type: number
+        constraints:
+          - type: not_null
+        data_tests: [not_null, unique]
+      - name: customer_id
+        data_type: number
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_customers', v=1)
+                field: customer_id
+      - name: order_status
+        data_type: varchar
+      - name: order_date
+        data_type: date
+      - name: created_at
+        data_type: timestamp_ntz
+      - name: updated_at
+        data_type: timestamp_ntz
+      - name: line_count
+        data_type: number
+      - name: item_quantity
+        data_type: number
+      - name: gross_order_amount
+        data_type: number(18,2)
+        data_tests: [positive_value]
+      - name: paid_amount
+        data_type: number(18,2)
+      - name: refunded_amount
+        data_type: number(18,2)
+      - name: net_paid_amount
+        data_type: number(18,2)
+      - name: last_paid_at
+        data_type: timestamp_ntz
+      - name: failed_payment_count
+        data_type: number
+      - name: is_paid_order
+        data_type: boolean
+
+  - name: fct_order_items
+    description: Order-line fact. Grain is one row per order item.
+    columns:
+      - name: order_item_id
+        data_tests: [not_null, unique]
+      - name: order_id
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('fct_orders')
+                field: order_id
+      - name: product_id
+        data_tests:
+          - relationships:
+              arguments:
+                to: ref('dim_products')
+                field: product_id
+

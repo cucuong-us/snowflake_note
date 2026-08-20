@@ -1,0 +1,18 @@
+selectors:
+  - name: finance
+    description: Build finance models and their upstream dependencies.
+    definition:
+      union:
+        - method: tag
+          value: finance
+          parents: true
+
+  - name: nightly
+    description: Full nightly production build, excluding models tagged manual.
+    definition:
+      exclude:
+        - method: fqn
+          value: "*"
+        - method: tag
+          value: manual
+

@@ -1,0 +1,13 @@
+version: 2
+
+groups:
+  - name: commerce
+    owner:
+      name: Commerce Analytics
+      email: commerce-analytics@example.com
+
+  - name: finance
+    owner:
+      name: Finance Analytics
+      email: finance-analytics@example.com
+

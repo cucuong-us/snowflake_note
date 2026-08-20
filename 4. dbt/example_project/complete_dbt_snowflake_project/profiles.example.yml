@@ -1,0 +1,40 @@
+complete_dbt_snowflake:
+  target: dev
+  outputs:
+    dev:
+      type: snowflake
+      account: "{{ env_var('DBT_SNOWFLAKE_ACCOUNT') }}"
+      user: "{{ env_var('DBT_SNOWFLAKE_USER') }}"
+      password: "{{ env_var('DBT_SNOWFLAKE_PASSWORD') }}"
+      role: "{{ env_var('DBT_SNOWFLAKE_ROLE', 'DBT_DEVELOPER') }}"
+      warehouse: "{{ env_var('DBT_SNOWFLAKE_WAREHOUSE', 'DBT_LEARNING_WH') }}"
+      database: "{{ env_var('DBT_SNOWFLAKE_DATABASE', 'DBT_LEARNING_ANALYTICS') }}"
+      schema: "{{ env_var('DBT_SNOWFLAKE_SCHEMA', 'DBT_DEV') }}"
+      threads: 4
+      client_session_keep_alive: false
+      query_tag: "dbt_complete_learning_dev"
+
+    ci:
+      type: snowflake
+      account: "{{ env_var('DBT_SNOWFLAKE_ACCOUNT') }}"
+      user: "{{ env_var('DBT_SNOWFLAKE_USER') }}"
+      password: "{{ env_var('DBT_SNOWFLAKE_PASSWORD') }}"
+      role: "{{ env_var('DBT_SNOWFLAKE_ROLE', 'DBT_DEVELOPER') }}"
+      warehouse: "{{ env_var('DBT_SNOWFLAKE_WAREHOUSE', 'DBT_LEARNING_WH') }}"
+      database: "{{ env_var('DBT_SNOWFLAKE_DATABASE', 'DBT_LEARNING_ANALYTICS') }}"
+      schema: "DBT_CI_{{ env_var('GITHUB_RUN_ID', 'LOCAL') }}"
+      threads: 8
+      query_tag: "dbt_complete_learning_ci"
+
+    prod:
+      type: snowflake
+      account: "{{ env_var('DBT_SNOWFLAKE_ACCOUNT') }}"
+      user: "{{ env_var('DBT_SNOWFLAKE_USER') }}"
+      password: "{{ env_var('DBT_SNOWFLAKE_PASSWORD') }}"
+      role: "{{ env_var('DBT_SNOWFLAKE_ROLE', 'DBT_TRANSFORMER') }}"
+      warehouse: "{{ env_var('DBT_SNOWFLAKE_WAREHOUSE', 'DBT_LEARNING_WH') }}"
+      database: "{{ env_var('DBT_SNOWFLAKE_DATABASE', 'DBT_LEARNING_ANALYTICS') }}"
+      schema: ANALYTICS
+      threads: 8
+      query_tag: "dbt_complete_learning_prod"
+

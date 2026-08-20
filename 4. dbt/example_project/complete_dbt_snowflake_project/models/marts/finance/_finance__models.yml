@@ -1,0 +1,14 @@
+version: 2
+
+models:
+  - name: fct_daily_revenue
+    description: Daily finance summary. Incrementally rebuilt with a configurable lookback window for late-arriving updates.
+    columns:
+      - name: revenue_date
+        description: Primary key and reporting date.
+        data_tests: [not_null, unique, not_in_future]
+      - name: order_count
+        data_tests: [not_null, positive_value]
+      - name: net_revenue
+        data_tests: [not_null]
+

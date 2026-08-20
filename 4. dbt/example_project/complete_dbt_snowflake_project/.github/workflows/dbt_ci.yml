@@ -1,0 +1,51 @@
+name: dbt CI
+
+on:
+  pull_request:
+    paths:
+      - "models/**"
+      - "macros/**"
+      - "tests/**"
+      - "seeds/**"
+      - "snapshots/**"
+      - "dbt_project.yml"
+      - "packages.yml"
+
+jobs:
+  dbt-build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Install dbt packages
+        run: |
+          cp profiles.example.yml profiles.yml
+          dbt deps
+
+      - name: Validate project and connection
+        run: dbt debug --target ci --profiles-dir .
+
+      - name: Build and test
+        run: dbt build --target ci --profiles-dir .
+
+    env:
+      DBT_SNOWFLAKE_ACCOUNT: ${{ secrets.DBT_SNOWFLAKE_ACCOUNT }}
+      DBT_SNOWFLAKE_USER: ${{ secrets.DBT_SNOWFLAKE_USER }}
+      DBT_SNOWFLAKE_PASSWORD: ${{ secrets.DBT_SNOWFLAKE_PASSWORD }}
+      DBT_SNOWFLAKE_ROLE: DBT_DEVELOPER
+      DBT_SNOWFLAKE_WAREHOUSE: DBT_LEARNING_WH
+      DBT_SNOWFLAKE_DATABASE: DBT_LEARNING_ANALYTICS
+      DBT_RAW_DATABASE: DBT_LEARNING_RAW
+      GITHUB_RUN_ID: ${{ github.run_id }}

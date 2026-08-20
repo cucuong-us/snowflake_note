@@ -1,0 +1,60 @@
+name: complete_dbt_snowflake
+version: 1.0.0
+config-version: 2
+
+profile: complete_dbt_snowflake
+
+model-paths: ["models"]
+analysis-paths: ["analyses"]
+test-paths: ["tests"]
+seed-paths: ["seeds"]
+macro-paths: ["macros"]
+snapshot-paths: ["snapshots"]
+
+target-path: "target"
+clean-targets:
+  - "target"
+  - "dbt_packages"
+
+vars:
+  order_lookback_days: 3
+  minimum_order_date: "2024-01-01"
+
+models:
+  complete_dbt_snowflake:
+    +persist_docs:
+      relation: true
+      columns: true
+
+    staging:
+      +materialized: view
+      +schema: staging
+      +tags: ["staging"]
+
+    intermediate:
+      +materialized: ephemeral
+      +tags: ["intermediate"]
+
+    marts:
+      +schema: marts
+      +materialized: table
+      +tags: ["marts"]
+
+      core:
+        +group: commerce
+
+      finance:
+        +schema: finance
+        +tags: ["finance"]
+        +group: finance
+
+seeds:
+  complete_dbt_snowflake:
+    +schema: reference
+    +quote_columns: false
+
+on-run-start:
+  - "{{ log('Starting dbt build for target: ' ~ target.name, info=True) }}"
+
+on-run-end:
+  - "{{ log('Finished dbt invocation for target: ' ~ target.name, info=True) }}"

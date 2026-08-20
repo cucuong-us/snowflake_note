@@ -1,0 +1,48 @@
+version: 2
+
+sources:
+  - name: shop
+    description: Raw e-commerce data loaded by the ingestion layer. dbt does not own these tables.
+    database: "{{ env_var('DBT_RAW_DATABASE', 'DBT_LEARNING_RAW') }}"
+    schema: RAW_SHOP
+    loader: demo_setup_script
+    loaded_at_field: _loaded_at
+    freshness:
+      warn_after: {count: 24, period: hour}
+      error_after: {count: 72, period: hour}
+    meta:
+      owner: data_platform
+
+    tables:
+      - name: customers
+        description: Current-state customer records from the commerce application.
+        columns:
+          - name: customer_id
+            data_tests: [not_null, unique]
+
+      - name: orders
+        description: One row per order.
+        columns:
+          - name: order_id
+            data_tests: [not_null, unique]
+          - name: customer_id
+            data_tests: [not_null]
+
+      - name: order_items
+        description: One row per product line within an order.
+        columns:
+          - name: order_item_id
+            data_tests: [not_null, unique]
+
+      - name: products
+        description: Product catalog.
+        columns:
+          - name: product_id
+            data_tests: [not_null, unique]
+
+      - name: payments
+        description: Payment attempts and refunds for orders.
+        columns:
+          - name: payment_id
+            data_tests: [not_null, unique]
+

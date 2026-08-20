@@ -1,0 +1,14 @@
+version: 2
+
+seeds:
+  - name: order_statuses
+    description: Small, version-controlled reference mapping for order statuses.
+    config:
+      column_types:
+        order_status: varchar(20)
+        status_group: varchar(20)
+        is_terminal: boolean
+    columns:
+      - name: order_status
+        data_tests: [not_null, unique]
+

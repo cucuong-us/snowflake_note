@@ -1,0 +1,35 @@
+version: 2
+
+models:
+  - name: int_orders__item_aggregates
+    description: Order-line measures aggregated to one row per order.
+    columns:
+      - name: order_id
+        data_tests: [not_null, unique]
+
+  - name: int_orders__payment_aggregates
+    description: Payment and refund measures aggregated to one row per order.
+    columns:
+      - name: order_id
+        data_tests: [not_null, unique]
+
+  - name: int_orders__enriched
+    description: Order-grain business logic combining order, item and payment measures.
+    columns:
+      - name: order_id
+        data_tests: [not_null, unique]
+
+unit_tests:
+  - name: item_aggregates_roll_up_to_order_grain
+    description: Two lines for the same order must be combined into one order-level result.
+    model: int_orders__item_aggregates
+    given:
+      - input: ref('stg_shop__order_items')
+        rows:
+          - {order_id: 1001, quantity: 1, line_amount: 20.00}
+          - {order_id: 1001, quantity: 2, line_amount: 30.00}
+          - {order_id: 1002, quantity: 1, line_amount: 15.00}
+    expect:
+      rows:
+        - {order_id: 1001, line_count: 2, item_quantity: 3, gross_order_amount: 50.00}
+        - {order_id: 1002, line_count: 1, item_quantity: 1, gross_order_amount: 15.00}

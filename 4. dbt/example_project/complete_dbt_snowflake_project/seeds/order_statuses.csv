@@ -1,0 +1,7 @@
+order_status,status_group,is_terminal
+placed,open,false
+paid,open,false
+shipped,open,false
+completed,closed,true
+cancelled,closed,true
+

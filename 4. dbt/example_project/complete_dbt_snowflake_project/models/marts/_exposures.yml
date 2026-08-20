@@ -1,0 +1,16 @@
+version: 2
+
+exposures:
+  - name: executive_revenue_dashboard
+    label: Executive Revenue Dashboard
+    type: dashboard
+    maturity: high
+    description: Example downstream BI asset used to show model-to-dashboard lineage.
+    depends_on:
+      - ref('fct_daily_revenue')
+      - ref('dim_customers', v=1)
+    owner:
+      name: Analytics Team
+      email: analytics@example.com
+    url: https://example.com/dashboards/revenue
+

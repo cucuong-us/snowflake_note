@@ -1,0 +1,17 @@
+version: 2
+
+snapshots:
+  - name: shop_customers_snapshot
+    description: SCD Type 2 history of customer attributes from the current-state source table.
+    relation: source('shop', 'customers')
+    config:
+      schema: snapshots
+      unique_key: customer_id
+      strategy: timestamp
+      updated_at: updated_at
+      hard_deletes: invalidate
+    columns:
+      - name: dbt_scd_id
+        data_tests: [not_null, unique]
+      - name: customer_id
+        data_tests: [not_null]
