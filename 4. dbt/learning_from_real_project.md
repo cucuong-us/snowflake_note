@@ -1,0 +1,1 @@
+- CTE is a temporal result in the SQL query
