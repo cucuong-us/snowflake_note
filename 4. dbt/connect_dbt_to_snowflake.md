@@ -152,8 +152,6 @@ dbt build --profiles-dir .
 - Their logic still runs as part of the downstream query.
 - This reduces intermediate database objects but can make compiled SQL longer.
 
-## Errors fixed
-
 ### Duplicate snapshot
 
 - The same snapshot existed in both SQL and YAML.
@@ -217,12 +215,12 @@ Warehouse       = compute used to run SQL
 
 
 - `dbt debug --profiles-dir .`:Validates the project configuration and tests the Snowflake connection. It does not create or modify data.
-`dbt deps --profiles-dir .`:Downloads packages listed in packages.yml, such as dbt_utils. It does not change Snowflake.    
-`dbt seed --profiles-dir .`:Loads CSV files from seeds/ into Snowflake tables. Rerunning it replaces table contents with the current CSV data.
-`dbt snapshot --profiles-dir .`:Detects source-data changes and updates SCD Type 2 history. It inserts new versions and closes outdated versions.
-`dbt test --profiles-dir .`: Runs data-quality checks such as not_null, unique, and relationships. It reports failures but does not repair data.
-`dbt build --profiles-dir .`:Builds seeds, snapshots, models, and tests in dependency order. Without --select, it processes the entire project.
-`dbt compile --profiles-dir .`: Converts Jinja, ref(), and source() into executable Snowflake SQL. It does not create tables or views.
+- `dbt deps --profiles-dir .`:Downloads packages listed in packages.yml, such as dbt_utils. It does not change Snowflake.    
+- `dbt seed --profiles-dir .`:Loads CSV files from seeds/ into Snowflake tables. Rerunning it replaces table contents with the current CSV data.
+- `dbt snapshot --profiles-dir .`:Detects source-data changes and updates SCD Type 2 history. It inserts new versions and closes outdated versions.
+- `dbt test --profiles-dir .`: Runs data-quality checks such as not_null, unique, and relationships. It reports failures but does not repair data.
+- `dbt build --profiles-dir .`:Builds seeds, snapshots, models, and tests in dependency order. Without --select, it processes the entire project.
+- `dbt compile --profiles-dir .`: Converts Jinja, ref(), and source() into executable Snowflake SQL. It does not create tables or views.
 ```
 
 Build one model:
