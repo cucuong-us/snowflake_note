@@ -163,18 +163,6 @@
 - [Configuration Reference](https://airflow.apache.org/docs/apache-airflow/stable/configurations-ref.html)
 
 ---
+## plan day 4: dag parsing optimization
+## plan day 5: general airflow optimisation and maintaince
 
-## Final review topics
-
-By the end of the plan, you should be comfortable discussing:
-
-- Airflow 3 architecture and component responsibilities.
-- Scheduling, data intervals, catchup, and backfill.
-- Reliable and maintainable DAG design.
-- Dynamic workflows and deferrable execution.
-- Pools, queues, concurrency, and priorities.
-- Executor selection and horizontal scaling.
-- Performance bottlenecks and observability.
-- Production reliability, security, capacity, and cost.
-
-> Make sure the documentation version selector is set to Airflow 3. Pin exact Airflow, provider, and Helm chart versions when designing a real system.
