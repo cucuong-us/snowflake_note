@@ -113,7 +113,7 @@ DAG version  = xyz
 - Operator: is a teamplate for specific job type to define a task
     + shell command
     + SQL Operator
-- Sentor: is special type of tasks for waiting requirement  
+- Sensor: is special type of tasks for waiting requirement  
     + Poke mode: keep worker live and wait a short time
     + Reschedule mode: check once if dont meet condition -> free resouce and schedule again
 - Task state:
