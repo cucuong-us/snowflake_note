@@ -21,7 +21,7 @@
 ### 1.2 Fan-out
 - Fan-out: mean that from a task generate multiple branchs or tasks. For example after `extract` I want airflow run `clean_tableA` and `delete_dulicate_tableB` in parallel
 - But make sure that resource is enough to run it
-- what happen if dont have enough resource ???
+- when out of resource, some task have to wait to run
 ### 1.3 Fan-in
 - on the other hand, Fan-in mean that from multiple branchs or task become only one task
 - For example, I clean data at `clean_orders` and `clean_customer`, now I wanna create a report after that. I will use Fan-in
@@ -293,12 +293,12 @@ Slots: 5
     + No tasks are being sent to the executor
 #### 5.5.2 Worker health
 - CeleryExecutor, monitor: 
-    + Worker online/offline.
-    + Worker heartbeat.
-    + Active tasks.
-    + Worker concurrency.
-    + Queue backlog.
-    + CPU/RAM/disk.
+    + Worker online/offline
+    + Worker heartbeat
+    + Active tasks
+    + Worker concurrency
+    + Queue backlog
+    + CPU/RAM/disk
 - KubernetesExecutor, because a Pod for a specific task, need to check 
     + Pod Pending
     + Pod Running
