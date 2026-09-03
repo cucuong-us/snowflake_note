@@ -290,3 +290,46 @@ Git sync/object storage -> DAG folder trên component
 - Disaster recovery: will answer that how long to recover and how many data loss
     + Recovery Point Objective: max time to recover data
     + Recovery Time Objective: airflow run normally 
+## 5 Operations and planning
+### 5.1 capacity planning
+- It answer the question that how many resources do system need
+- We need to estimate: 
+    + how many task at the time
+    + time average and P95 P99 (P mean percentile)
+    + CPU and RAM for a task 
+    + the percentage of retry
+    + burst
+- caculate concurrency = task per min * time runing * retry * headroom (use for burst)
+### 5.2 SLO 
+- SLO stand for Service Level Objective: mean that objective for service quality, for example:
+    + 99% run completed sucessfully
+- SLI: the real number is measured 
+- SLA: the commitment with customer
+### 5.3 Backfill resource isolation
+- some situation need to back fill are:
+    + new pipeline and need to process data in the past
+    + the pipeline pause temporary for maintance
+    + fix logic transform
+- need to isolate because backfill flow can use many worker and it can make schedule production miss the deadline -> SLO
+- for example:
+```
+airflow backfill create \
+  --dag-id daily_orders \
+  --from-date 2026-01-01 \
+  --to-date 2026-06-30 \
+  --reprocess-behavior failed \
+  --max-active-runs 2
+```
+- max-active-run is applied independently with normal max_active_runs of DAG
+- can also set private pool, queue, worker for backfill
+- set priority of backfill lower than real production DAGs
+### 5.4 Cost và reliability trade-offs
+- scale to zero and warn capacity:
+    + scale to zero: shutdown entire worker when idle 
+    + warn capacity: keep minimum worker
+- CeleryExecutor và KubernetesExecutor
+    + Celery: worker always is available, cost for idle
+    + Kebernetes: good for isolation, low idle task compute
+- On-demand và spot instance
+    + on-demand is more expensive but rarely get back by provider 
+    + spot cheap and can be gotten by provider, dont suitable for task that need reliability
