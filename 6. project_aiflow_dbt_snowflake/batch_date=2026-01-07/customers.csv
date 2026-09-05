@@ -1,0 +1,6 @@
+customer_id,customer_name,email,city,created_at,updated_at
+C001,An Nguyen,an@example.com,Bangkok,Sat Dec 20 2025 16:00:00 GMT+0700 (Indochina Time),Sat Dec 20 2025 16:00:00 GMT+0700 (Indochina Time)
+C002,Mai Tran,mai@example.com,Chiang Mai,Sat Dec 20 2025 16:00:00 GMT+0700 (Indochina Time),Sat Dec 20 2025 16:00:00 GMT+0700 (Indochina Time)
+C003,Minh Le,minh@example.com,Bangkok,Sat Dec 20 2025 16:00:00 GMT+0700 (Indochina Time),Sat Dec 20 2025 16:00:00 GMT+0700 (Indochina Time)
+C004,Linh Pham,linh@example.com,Phuket,Sat Dec 20 2025 16:00:00 GMT+0700 (Indochina Time),Sat Dec 20 2025 16:00:00 GMT+0700 (Indochina Time)
+C005,Bao Ho,,Khon Kaen,Sat Dec 20 2025 16:00:00 GMT+0700 (Indochina Time),Sat Dec 20 2025 16:00:00 GMT+0700 (Indochina Time)

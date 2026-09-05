@@ -1,0 +1,11 @@
+order_id,customer_id,ordered_at,status,shipping_amount,tax_amount,updated_at
+O001,C001,Thu Jan 01 2026 16:00:00 GMT+0700 (Indochina Time),COMPLETED,10.00,0.00,Wed Jan 07 2026 22:00:00 GMT+0700 (Indochina Time)
+O002,C002,Thu Jan 01 2026 16:00:00 GMT+0700 (Indochina Time),COMPLETED,10.00,0.00,Wed Jan 07 2026 22:00:00 GMT+0700 (Indochina Time)
+O003,C003,Thu Jan 01 2026 16:00:00 GMT+0700 (Indochina Time),COMPLETED,10.00,0.00,Wed Jan 07 2026 22:00:00 GMT+0700 (Indochina Time)
+O004,C004,Thu Jan 01 2026 16:00:00 GMT+0700 (Indochina Time),COMPLETED,10.00,0.00,Wed Jan 07 2026 22:00:00 GMT+0700 (Indochina Time)
+O005,C005,Thu Jan 01 2026 16:00:00 GMT+0700 (Indochina Time),COMPLETED,10.00,0.00,Wed Jan 07 2026 22:00:00 GMT+0700 (Indochina Time)
+O006,C001,Thu Jan 01 2026 16:00:00 GMT+0700 (Indochina Time),COMPLETED,10.00,0.00,Wed Jan 07 2026 22:00:00 GMT+0700 (Indochina Time)
+O007,C002,Sat Jan 03 2026 16:00:00 GMT+0700 (Indochina Time),Shipped,10.00,0.00,Wed Jan 07 2026 22:00:00 GMT+0700 (Indochina Time)
+O008,C003,Sat Jan 03 2026 16:00:00 GMT+0700 (Indochina Time),PAID,10.00,0.00,Wed Jan 07 2026 22:00:00 GMT+0700 (Indochina Time)
+O009,C004,Wed Jan 07 2026 16:00:00 GMT+0700 (Indochina Time),pending,10.00,0.00,Wed Jan 07 2026 22:00:00 GMT+0700 (Indochina Time)
+O010,C005,Wed Jan 07 2026 16:00:00 GMT+0700 (Indochina Time),cancelled,10.00,0.00,Wed Jan 07 2026 22:00:00 GMT+0700 (Indochina Time)

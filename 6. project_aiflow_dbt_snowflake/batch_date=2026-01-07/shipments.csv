@@ -1,0 +1,8 @@
+shipment_id,order_id,shipped_at,promised_delivery_at,delivered_at,updated_at
+SH001,O001,Thu Jan 01 2026 21:00:00 GMT+0700 (Indochina Time),Sat Jan 03 2026 19:00:00 GMT+0700 (Indochina Time),Sat Jan 03 2026 17:00:00 GMT+0700 (Indochina Time),Wed Jan 07 2026 21:00:00 GMT+0700 (Indochina Time)
+SH002,O002,Thu Jan 01 2026 21:00:00 GMT+0700 (Indochina Time),Sat Jan 03 2026 19:00:00 GMT+0700 (Indochina Time),Sat Jan 03 2026 22:00:00 GMT+0700 (Indochina Time),Wed Jan 07 2026 21:00:00 GMT+0700 (Indochina Time)
+SH003,O003,Thu Jan 01 2026 21:00:00 GMT+0700 (Indochina Time),Sat Jan 03 2026 19:00:00 GMT+0700 (Indochina Time),Sat Jan 03 2026 17:00:00 GMT+0700 (Indochina Time),Wed Jan 07 2026 21:00:00 GMT+0700 (Indochina Time)
+SH004,O004,Thu Jan 01 2026 21:00:00 GMT+0700 (Indochina Time),Sat Jan 03 2026 19:00:00 GMT+0700 (Indochina Time),Sat Jan 03 2026 22:00:00 GMT+0700 (Indochina Time),Wed Jan 07 2026 21:00:00 GMT+0700 (Indochina Time)
+SH005,O005,Thu Jan 01 2026 21:00:00 GMT+0700 (Indochina Time),Sat Jan 03 2026 19:00:00 GMT+0700 (Indochina Time),Sat Jan 03 2026 17:00:00 GMT+0700 (Indochina Time),Wed Jan 07 2026 21:00:00 GMT+0700 (Indochina Time)
+SH006,O006,Thu Jan 01 2026 21:00:00 GMT+0700 (Indochina Time),Sat Jan 03 2026 19:00:00 GMT+0700 (Indochina Time),Sat Jan 03 2026 22:00:00 GMT+0700 (Indochina Time),Wed Jan 07 2026 21:00:00 GMT+0700 (Indochina Time)
+SH007,O007,Sat Jan 03 2026 21:00:00 GMT+0700 (Indochina Time),Mon Jan 05 2026 19:00:00 GMT+0700 (Indochina Time),,Wed Jan 07 2026 21:00:00 GMT+0700 (Indochina Time)

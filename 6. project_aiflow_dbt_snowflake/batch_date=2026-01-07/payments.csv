@@ -1,0 +1,13 @@
+payment_id,order_id,transaction_type,status,amount,processed_at,updated_at
+PAY001,O001,capture,SUCCESS,100.00,Thu Jan 01 2026 17:00:00 GMT+0700 (Indochina Time),Thu Jan 01 2026 17:00:00 GMT+0700 (Indochina Time)
+PAY002,O001,capture,success,140.00,Thu Jan 01 2026 18:00:00 GMT+0700 (Indochina Time),Thu Jan 01 2026 18:00:00 GMT+0700 (Indochina Time)
+PAY003,O001,refund,success,30.00,Wed Jan 07 2026 19:00:00 GMT+0700 (Indochina Time),Wed Jan 07 2026 19:00:00 GMT+0700 (Indochina Time)
+PAY004,O002,capture,success,255.00,Thu Jan 01 2026 18:00:00 GMT+0700 (Indochina Time),Thu Jan 01 2026 18:00:00 GMT+0700 (Indochina Time)
+PAY005,O003,capture,failed,420.00,Thu Jan 01 2026 17:00:00 GMT+0700 (Indochina Time),Thu Jan 01 2026 17:00:00 GMT+0700 (Indochina Time)
+PAY006,O003,capture,success,420.00,Thu Jan 01 2026 18:00:00 GMT+0700 (Indochina Time),Thu Jan 01 2026 18:00:00 GMT+0700 (Indochina Time)
+PAY007,O004,capture,success,60.00,Thu Jan 01 2026 18:00:00 GMT+0700 (Indochina Time),Thu Jan 01 2026 18:00:00 GMT+0700 (Indochina Time)
+PAY008,O005,capture,success,165.00,Thu Jan 01 2026 18:00:00 GMT+0700 (Indochina Time),Thu Jan 01 2026 18:00:00 GMT+0700 (Indochina Time)
+PAY009,O006,capture,success,185.00,Thu Jan 01 2026 18:00:00 GMT+0700 (Indochina Time),Thu Jan 01 2026 18:00:00 GMT+0700 (Indochina Time)
+PAY010,O007,capture,success,255.00,Sat Jan 03 2026 18:00:00 GMT+0700 (Indochina Time),Sat Jan 03 2026 18:00:00 GMT+0700 (Indochina Time)
+PAY011,O008,capture,success,255.00,Sat Jan 03 2026 18:00:00 GMT+0700 (Indochina Time),Sat Jan 03 2026 18:00:00 GMT+0700 (Indochina Time)
+PAY012,O009,capture,pending,420.00,,Wed Jan 07 2026 17:00:00 GMT+0700 (Indochina Time)
