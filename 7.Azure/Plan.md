@@ -1,4 +1,4 @@
-1. Azure Entra ID — 2h
+1. Azure Entra ID
 - User / Group
 - Enterprise Application
 - Service Principal
