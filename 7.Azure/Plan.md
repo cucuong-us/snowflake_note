@@ -3,8 +3,7 @@
 - Enterprise Application
 - Service Principal
 - SSO
-- SAML cơ bản
-
+- SAML 
 2. Snowflake RBAC (learned, review again)
 
 - User
@@ -22,7 +21,7 @@
 4. Azure Group -> Snowflake Role
 
 - Azure groups
-- SCIM là gì
+- SCIM
 - Configure SCIM provisioning
 - Group -> Snowflake role
 - add/remove user from group
