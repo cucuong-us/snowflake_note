@@ -15,6 +15,8 @@
 - SCIM provision is a set of general rule help Snowflake manage user, role and assign role base on information from entra 
 - SSO allow to use authenticated ID from system to other systems. For example, I sign in successfully in entra and I can use it to sign in snowflake without password
 - SAML is a standard for one system to send proof of identity authentication to another system.
+
+
 ## 2. Snowflake RBAC
 - RBAC: Role Based Access Control
 - after authentication, need to define what users can do
@@ -24,5 +26,7 @@
 - revoke for removing 
 - role can inherit
 - Least privilege: always provide enough permission,not redundant 
+
+
 ## 3. Azure SSO → Snowflake
 - the purpose of SSO make snowflake trust entra, we need o config to make them know and trust each other (follow document and set up)
