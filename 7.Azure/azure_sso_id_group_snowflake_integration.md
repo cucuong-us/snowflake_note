@@ -15,6 +15,10 @@
 - SCIM provision is a set of general rule help Snowflake manage user, role and assign role base on information from entra 
 - SSO allow to use authenticated ID from system to other systems. For example, I sign in successfully in entra and I can use it to sign in snowflake without password
 - SAML is a standard for one system to send proof of identity authentication to another system.
+    + user register in snowflake and choose SSO 
+    + snowflake direct browser to entra 
+    + entra direct to snowflake with NameID Entra (dont include password)
+    + snowflake find user
 
 
 ## 2. Snowflake RBAC
